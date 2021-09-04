@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Основы - Python3-GObject Tutorial</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u041e\u0441\u043d\u043e\u0432\u044b";
+    var mkdocs_page_input_path = "stats/basics.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Python3-GObject Tutorial</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Введение</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Установка</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../started/">Начиная</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Основы</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Главный цикл и сигналы</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Характеристики (свойства)</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../unicode/">Работа со строками</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../gallery/">Список виджетов</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../layout/">Контейнеры макета</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Python3-GObject Tutorial</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Основы</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">Основы</h1>
+<p>В этом разделе приведены общие сведения о GTK+.</p>
+<h2 id="_2">Главный цикл и сигналы</h2>
+<p>Как и большинство наборов инструментов с графическим пользовтаельским интерфейсом, GTK+ использует модель программирования, управляемую событиями. Когда пользователь ничего не делает, GTK+ сидит в основном цикле и ждёт ввода. Если пользователь совершает какое-либо действие - скажем, целчок мышью - тогда основной цикл "просыпается" и доставляет событие в GTK+.</p>
+<p>Когда виджеты получают событие, они чатсо отсылают один или несколько сигналов. Они уведомляют программу о том, что что-то произошло, вызывая функции, которые вы подключили к сигналу. Такие функции обычно называются <em>обратными вызовами</em> (callback). Когда вызываются ваши обратные вызовы, вы обычно предпринимаете какое-то действие - например, при нажатии кнопки "Открыть" вы можете отобразить диалоговое окно выбора файла (<em>а лучше сделать другое окно для выбора файла и вызвать его взамен оригинального - прим. переводчика</em>). После завершения обратного вызова GTK+ вернётся в основной цикл и будет ожидать дополнительных действий пользователя.</p>
+<p>Общий пример:</p>
+<pre><code class="language-python">handler_id = widget.connect(&quot;event&quot;, callback, data)
+</code></pre>
+<p>Во-первых, <em>виджет</em> (widget) - это экземпляр созданного ранее виджета. Далее событие (<code>event</code>), которое нас интересует. У каждого виджета есть свои собственные события, которые могут произойти. Например, если у вас есть кнопка, вы обычно хотите подключиться к событию <code>clicked</code>. Это означает, что при нажатии кнопки выдаётся сигнал.</p>
+<p>Во-вторых, аргумент <code>callback</code> - это имя функции обратного вызова. Он содержит код, который запускается при выдаче сигналов указанного типа.</p>
+<p>Наконец, аргумент <code>data</code> включает любые данные, которые должны быть переданы при выдаче сигнала. Однако этот аргумент является необязательным и может быть опущен, если не требуется.</p>
+<p>Функция возвращает число, которое идентифицирует эту конкретную пару <em>сигнал</em>--<em>обратный вызов</em>. Требуется отключиться от сигнала, чтобы функция обратного вызова не вызывалась во время каких-либо будущих или текущих выдач сигнала, к которому она была подключена.</p>
+<pre><code class="language-python">widget.disconnect(handler_id)
+</code></pre>
+<p>Если вы по какой-то причине потеряли "<tt>handler_id</tt>" (например, обработчики были установлены с помощью <code>Gtk.Builder.connect_signals()</code>), вы всё равно можете отключить определённый обратный вызов с помощью функции <code>disconnect_by_func()</code>:</p>
+<pre><code class="language-python">widget.disconnect_by_func(callback)
+</code></pre>
+<p>Приложения должны подключаться к сигналу "destroy" окна верхнего уровня. Обработчик по умолчанию уничтожает окно, но не завершит работу приложения. Подключение сигнала "destroy" окна верхнего уровня к функции <code>Gtk.main_quit()</code> приведёт к желаемому поведению.</p>
+<pre><code class="language-python">window.connect(&quot;destroy&quot;, Gtk.main_quit)
+</code></pre>
+<p>Вызов <code>Gtk.main-quit()</code> приводит к возврату основного цикла внутри <code>Gtk.main()</code>.</p>
+<h2 id="_3">Характеристики (свойства)</h2>
+<p>Свойства описывают конфигурацию и состояние виджетов. Что касается сигналов, каждый виджет имеет свой набор свойств. Например, кнопка имеет свойство "label", которое содержит текст виджета метки внутри кнопки. Вы можете указать имя и значение любого кол-ва свойств в качестве аргументов ключевого слова при создании экземпляра виджета. Чтобы создать метку, выровненную по правому краю, с текстом "Hello World" и углом 25॰, используйте:</p>
+<pre><code class="language-python">label = Gtk.Label(label=&quot;Hello World&quot;, angle=25, halign=Gtk.Align.END)
+</code></pre>
+<p>Эта строка эквивалентна следующему:</p>
+<pre><code class="language-python">label = Gtk.Label()
+label.set_label(&quot;Hello World&quot;)
+label.set_angle(25)
+label.set_halign(Gtk.Align.END)
+</code></pre>
+<p>Вместо использования геттеров и сеттеров вы так же можете получать и устанавливать свойства <code>gobject</code> через св-во "props", такое как <code>widget.props.prop_name = value</code>. Это эквивалентно более подробным <code>widget.get_property("имя свойства")</code> и <code>widget.set_property("имя свойства", значение)</code>.</p>
+<p>To see which properties are available for a widget in the running version of GTK you can “dir” the “props” property:</p>
+<pre><code class="language-python">widget = Gtk.Box()
+print(dir(widget.props))
+</code></pre>
+<p>Это напечатает в консоли список свойств <code>Gtk.Box</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../unicode/" class="btn btn-neutral float-right" title="Работа со строками">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../started/" class="btn btn-neutral" title="Начиная"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../started/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../unicode/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

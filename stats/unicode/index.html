@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Работа со строками - Python3-GObject Tutorial</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u0420\u0430\u0431\u043e\u0442\u0430 \u0441\u043e \u0441\u0442\u0440\u043e\u043a\u0430\u043c\u0438";
+    var mkdocs_page_input_path = "stats/unicode.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Python3-GObject Tutorial</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Введение</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Установка</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../started/">Начиная</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../basics/">Основы</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Работа со строками</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Определения</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unicode-python-3">Поддержка Unicode в Python 3</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unicode-gtk">Поддержка Unicode в GTK+</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Литература</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../gallery/">Список виджетов</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../layout/">Контейнеры макета</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Python3-GObject Tutorial</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Работа со строками</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">Работа со строками</h1>
+<p>В этом разделе объясняется, как строки представлены в Python 2.x, Python 3.x и GTK+, и обсуждаются распространённые ошибки, возникающие при работе со строками.</p>
+<h2 id="_2">Определения</h2>
+<p>Концептуально строка представляет собой список символов, таких как "А", "B", "C" или "E". <strong>Символы</strong> являются абстрактными представлениями, и их значение зависит от языка и контекста, в которых они используются. Стандарт Unicode описывает, как символы представляются <strong>code points</strong>. Например, указанные выше символы представлены <strong>code points</strong> <code>U+0041</code>, <code>U+0042</code>, <code>U+0043</code> и <code>U+00C9</code> соответственно. В основном code points - это числа в диапазоне от 0 до 0x10FFFF.</p>
+<p>Как упоминалось ранее, представление строки в виде списка code points является абстрактным. Чтобы преобразить это абстрактное представление в последовательность байтов, строка Unicode должна быть закодирована. Самая простая форма кодировки - это ASCII и выполняется следующим образом:</p>
+<ol>
+<li>Если code point &lt; 128, каждый байт совпадает со значением code point;</li>
+<li>Если code point больше или равна 128, строка Unicode не может быть представлена в этой кодировке, в таком случае Python вызывает исключение <code>UnicodeEncodeError</code>).</li>
+</ol>
+<p>Хотя ASCII проста в применении, но едва ли хватит 128 различных символов, которых она может закодировать. Есть другая кодировка, призванная решить эту проблему, - UTF-8. UTF означает "Unicode Transformation Format" ("Формат преобразования Unicode"), а "8" - что при кодировании используются 8-битные числа.</p>
+<h2 id="unicode-python-3">Поддержка Unicode в Python 3</h2>
+<p>Начиная с Python 3.0, все строки хранятся как <code>Unicode</code> в экземпляр типа <code>str</code>. С другой стороны, закодированные строки представлены как двоичные данные в форме экземпляров байтового типа. Концептуально <code>str</code> относится к тексту, а байты - к данным. Используйте <code>str.encode()</code> для перехода от str к байтам и <code>bytes.decode()</code> для перехода от байтов к str.</p>
+<p>Кроме того, больше невозможно смешивать строки Unicode с закодированными строками, потому что это приведёт к ошибке <code>TypeError</code>:</p>
+<pre><code class="language-python">&gt;&gt;&gt; text = &quot;Fu\u00dfb\u00e4lle&quot;
+&gt;&gt;&gt; data = b&quot; sind rund&quot;
+&gt;&gt;&gt; text + data
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: Can't convert 'bytes' object to str implicitly
+&gt;&gt;&gt; text + data.decode(&quot;utf-8&quot;)
+'Fußbälle sind rund'
+&gt;&gt;&gt; text.encode(&quot;utf-8&quot;) + data
+b'Fu\xc3\x9fb\xc3\xa4lle sind rund'
+</code></pre>
+<h2 id="unicode-gtk">Поддержка Unicode в GTK+</h2>
+<p>PyGObject будет автоматически кодировать/декодировать в/из UTF-8, если вы передаёте строку в метод или метод возвращает строку. Строки или текст всегда будут представлены только как экземпляры <code>str</code>:</p>
+<pre><code class="language-python">&gt;&gt;&gt; from gi.repository import Gtk
+&gt;&gt;&gt; label = Gtk.Label()
+&gt;&gt;&gt; text = &quot;Fu\u00dfb\u00e4lle&quot;
+&gt;&gt;&gt; label.set_text(text)
+&gt;&gt;&gt; txt = label.get_text()
+&gt;&gt;&gt; type(txt), txt
+(&lt;class 'str'&gt;, 'Fußbälle')
+&gt;&gt;&gt; txt == text
+True
+</code></pre>
+<h2 id="_3">Литература</h2>
+<ul>
+<li><a href="https://docs.python.org/3/whatsnew/3.0.html#text-vs-data-instead-of-unicode-vs-8-bit">What's new in Python 3.0</a> описывает новые концепции, чётко различающие текст и данные;</li>
+<li><a href="https://docs.python.org/dev/howto/unicode.html">The Unicode HOWTO for Python 3.x</a> обсуждает поддержку Unicode в Python 3.x;</li>
+<li><a href="https://www.utf8-chartable.de/">UTF-8 encoding table and Unicode characters</a> содержит список code points Unicode и их соответствующую кодировку UTF-8.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gallery/" class="btn btn-neutral float-right" title="Список виджетов">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../basics/" class="btn btn-neutral" title="Основы"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../basics/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../gallery/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
