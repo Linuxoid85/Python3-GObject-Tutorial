@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Список виджетов - My Docs</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../" class="dropdown-item">Welcome to MkDocs</a>
+</li>
+                                    
+<li>
+    <a href="../../_coverpage/" class="dropdown-item">Python3 GObject Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../_sidebar/" class="dropdown-item"> sidebar</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Stats</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../basics/" class="dropdown-item">Основы</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Список виджетов</a>
+</li>
+            
+<li>
+    <a href="../installation/" class="dropdown-item">Установка</a>
+</li>
+            
+<li>
+    <a href="../layout/" class="dropdown-item">Контейнеры макета</a>
+</li>
+            
+<li>
+    <a href="../started/" class="dropdown-item">Начиная</a>
+</li>
+            
+<li>
+    <a href="../unicode/" class="dropdown-item">Работа со строками</a>
+</li>
+            
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Pic</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../pic/basics/" class="dropdown-item">Основы</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../basics/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../installation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Список виджетов</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">Список виджетов</h1>
+<p>В данной инструкции приведены наиболее часто используемые виджеты GTK+3.</p>
+<p>?&gt; TODO - добавить подробное описание каждого виджета, как это сделано в оригинале.</p>
+<!-- Описание каждого виджета - отдельные страницы -->
+
+<table>
+<thead>
+<tr>
+<th align="left">Виджет</th>
+<th>Скриншот</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Gtk.AboutDialog</code></td>
+<td><img alt="Gtk.AboutDialog" src="../pic/gallery/aboutdialog.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.AccelLabel</code></td>
+<td><img alt="Gtk.AccelLabel" src="../pic/gallery/accel-label.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ActionBar</code></td>
+<td><img alt="Gtk.ActionBar" src="../pic/gallery/action-bar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.AppChooserButton</code></td>
+<td><img alt="Gtk.AppChooserButton" src="../pic/gallery/appchooserbutton.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.AppChooserDialog</code></td>
+<td><img alt="Gtk.AppChooserDialog" src="../pic/gallery/appchooserdialog.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Assistant</code></td>
+<td><img alt="Gtk.Assistant" src="../pic/gallery/assistant.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Button</code></td>
+<td><img alt="Gtk.Button" src="../pic/gallery/button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.CheckButton</code></td>
+<td><img alt="Gtk.CheckButton" src="../pic/gallery/check-button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ColorButton</code></td>
+<td><img alt="Gtk.ColorButton" src="../pic/gallery/color-button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ColorChooserDialog</code></td>
+<td><img alt="Gtk.ColorChooserDialog" src="../pic/gallery/colorchooser.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ComboBox</code></td>
+<td><img alt="Gtk.ComboBox" src="../pic/gallery/combo-box.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ComboBoxText</code></td>
+<td><img alt="Gtk.ComboBoxText" src="../pic/gallery/combo-box-text.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Entry</code></td>
+<td><img alt="Gtk.Entry" src="../pic/gallery/entry.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.FileChooserButton</code></td>
+<td><img alt="Gtk.FileChooserButton" src="../pic/gallery/file-button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.FileChooserDialog</code></td>
+<td><img alt="Gtk.FileChooserDialog" src="../pic/gallery/file-dialog.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.FlowBox</code></td>
+<td><img alt="Gtk.FlowBox" src="../pic/gallery/flow-box.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.FontButton</code></td>
+<td><img alt="Gtk.FontButton" src="../pic/gallery/font-button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.FontChooserDialog</code></td>
+<td><img alt="Gtk.FontChooserDialog" src="../pic/gallery/fontchooser.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Frame</code></td>
+<td><img alt="Gtk.Frame" src="../pic/gallery/frame.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.GLArea</code></td>
+<td><img alt="Gtk.GLArea" src="../pic/gallery/glarea.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Grid</code></td>
+<td><img alt="Gtk.Grid" src="../pic/gallery/grid-packing.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.HeaderBar</code></td>
+<td><img alt="Gtk.HeaderBar" src="../pic/gallery/headerbar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.IconView</code></td>
+<td><img alt="Gtk.IconView" src="../pic/gallery/icon-view.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Image</code></td>
+<td><img alt="Gtk.Image" src="../pic/gallery/image.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.InfoBar</code></td>
+<td><img alt="Gtk.InfoBar" src="../pic/gallery/info-bar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Label</code></td>
+<td><img alt="Gtk.Label" src="../pic/gallery/label.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.LevelBar</code></td>
+<td><img alt="Gtk.LevelBar" src="../pic/gallery/levelbar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.LinkButton</code></td>
+<td><img alt="Gtk.LinkButton" src="../pic/gallery/link-button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ListBox</code></td>
+<td><img alt="Gtk.ListBox" src="../pic/gallery/list-box.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.LockButton</code></td>
+<td><img alt="Gtk.LockButton" src="../pic/gallery/lockbutton.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.MenuBar</code></td>
+<td><img alt="Gtk.MenuBar" src="../pic/gallery/menu-bar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.MenuButton</code></td>
+<td><img alt="Gtk.MenuButton" src="../pic/gallery/menu-button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.MessageDialog</code></td>
+<td><img alt="Gtk.MessageDialog" src="../pic/gallery/messagedialog.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Notebook</code></td>
+<td><img alt="Gtk.Notebook" src="../pic/gallery/notebook.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Paned</code></td>
+<td><img alt="Gtk.Paned" src="../pic/gallery/panes.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.PlacesSidebar</code></td>
+<td><img alt="Gtk.PlacesSidebar" src="../pic/gallery/placessidebar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.PrograssBar</code></td>
+<td><img alt="Gtk.Progressbar" src="../pic/gallery/progressbar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.RadioButton</code></td>
+<td><img alt="Gtk.RadioButton" src="../pic/gallery/radio-group.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.RecentChooserDialog</code></td>
+<td><img alt="Gtk.RecentChooserDialog" src="../pic/gallery/recentchooserdialog.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Scale</code></td>
+<td><img alt="Gtk.Scale" src="../pic/gallery/scales.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Scrollbar</code></td>
+<td><img alt="Gtk.Scrollbar" src="../pic/gallery/scrollbar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ScrolledWindow</code></td>
+<td><img alt="Gtk.ScrolledWindow" src="../pic/gallery/scrolledwindow.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.SearchBar</code></td>
+<td><img alt="Gtk.SearchBar" src="../pic/gallery/search-bar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.SearchEntry</code></td>
+<td><img alt="Gtk.SearchEntry" src="../pic/gallery/search-entry.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Separator</code></td>
+<td><img alt="Gtk.Separator" src="../pic/gallery/separator.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.SpinButton</code></td>
+<td><img alt="Gtk.SplitButton" src="../pic/gallery/spin-button.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Spinner</code></td>
+<td><img alt="Gtk.Spinner" src="../pic/gallery/spinner.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Stack</code></td>
+<td><img alt="Gtk.Stack" src="../pic/gallery/stack.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.StackSwitcher</code></td>
+<td><img alt="Gtk.StackSwitcher" src="../pic/gallery/stackswitcher.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Statusbar</code></td>
+<td><img alt="Gtk.Statusbar" src="../pic/gallery/statusbar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Switch</code></td>
+<td><img alt="Gtk.Switch" src="../pic/gallery/switch.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.TextView</code></td>
+<td><img alt="Gtk.TextView" src="../pic/gallery/multiline-text.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.ToolPalette</code></td>
+<td><img alt="Gtk.ToolPalette" src="../pic/gallery/toolpalette.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Toolbar</code></td>
+<td><img alt="Gtk.Toolbar" src="../pic/gallery/toolbar.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.TreeView</code></td>
+<td><img alt="Gtk.TreeView" src="../pic/gallery/list-and-tree.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.VolumeButton</code></td>
+<td><img alt="Gtk.VolumeButton" src="../pic/gallery/volumebutton.png" /></td>
+</tr>
+<tr>
+<td align="left"><code>Gtk.Window</code></td>
+<td><img alt="Gtk.Window" src="../pic/gallery/window.png" /></td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

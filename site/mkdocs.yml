@@ -1,0 +1,11 @@
+site_name: Python3-GObject Tutorial
+nav:
+    - Введение: README.md
+    - Установка: stats/installation.md
+    - Начиная: stats/started.md
+    - Основы: stats/basics.md
+    - Работа со строками: stats/unicode.md
+    - Список виджетов: stats/gallery.md
+    - Контейнеры макета: stats/layout.md
+
+theme: readthedocs
