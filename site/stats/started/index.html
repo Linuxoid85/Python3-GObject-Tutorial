@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Начиная - Python3-GObject Tutorial</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u041d\u0430\u0447\u0438\u043d\u0430\u044f";
+    var mkdocs_page_input_path = "stats/started.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Python3-GObject Tutorial</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Введение</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Установка</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Начиная</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Простой пример</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Расширенный пример</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../basics/">Основы</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../unicode/">Работа со строками</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../gallery/">Список виджетов</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../layout/">Контейнеры макета</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Python3-GObject Tutorial</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Начиная</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">Начиная</h1>
+<h2 id="_2">Простой пример</h2>
+<p>Начнём с малого. Создадим пустое окно 200х200 pic:</p>
+<pre><code class="language-python">#!/usr/bin/python3
+import gi
+
+gi.require_version(&quot;Gtk&quot;, &quot;3.0&quot;)
+from gi.repository import Gtk
+
+win = Gtk.Window()
+win.connect(&quot;destroy&quot;, Gtk.main_quit)
+win.show_all()
+Gtk.main()
+</code></pre>
+<p>Теперь мы объясним каждую строчку кода.</p>
+<pre><code class="language-python">import gi
+
+gi.require_version(&quot;Gtk&quot;, &quot;3.0&quot;)
+from gi.repository import Gtk
+</code></pre>
+<p>Вы должны импортировать модуль Gtk, чтобы иметь доступ к классам и функциям GTK+. В системе пользователя может ыбть установлено несколько версий GTK+ одновременно, поэтому нужно убедиться, что при импорте Gtk он будет ссылаться на GTK+3, а не на любую другую версию библиотеки, что является целью оператора <code>gi.require_version("Gtk", "3.0")</code>.</p>
+<p>Следующее создаёт пустое окно:</p>
+<pre><code class="language-python">win = Gtk.Window()
+</code></pre>
+<p>Затем выполняется подключение к событию удаления окна, чтобы гарантировать завершение работы приложения, если мы щёлкнем по <code>X</code>, чтобы закрыть окно.</p>
+<pre><code class="language-python">win.connect(&quot;destroy&quot;, Gtk.main_quit)
+</code></pre>
+<p>Следующее показывает окно на экран:</p>
+<pre><code class="language-python">win.show_all()
+</code></pre>
+<p>Наконец, запускаем цикл обработки GTK+, который завершаем при закрытии окна (см шестую строку):</p>
+<pre><code class="language-python">Gtk.main()
+</code></pre>
+<p>Для запуска программы выполните:</p>
+<pre><code class="language-bash">chmod +x example1.py
+./example1.py
+</code></pre>
+<p>Откроется следующее окно:</p>
+<p><img alt="Окно 1" src="../pic/started/window1.png" /></p>
+<h2 id="_3">Расширенный пример</h2>
+<p>Версия "классического" Hello World:</p>
+<pre><code class="language-python">import gi
+
+gi.require_version(&quot;Gtk&quot;, &quot;3.0&quot;)
+from gi.repository import Gtk
+
+
+class MyWindow(Gtk.Window):
+    def __init__(self):
+        super().__init__(title=&quot;Hello World&quot;)
+
+        self.button = Gtk.Button(label=&quot;Нажми на меня&quot;)
+        self.button.connect(&quot;clicked&quot;, self.on_button_clicked)
+        self.add(self.button)
+
+    def on_button_clicked(self, widget):
+        print(&quot;Hello World&quot;)
+
+
+win = MyWindow()
+win.connect(&quot;destroy&quot;, Gtk.main_quit)
+win.show_all()
+Gtk.main()
+</code></pre>
+<p>Этот пример отличается от предыдущего тем, что мы создаём подкласс <code>Gtk.Window</code> для определения нашего собственного класса <code>MyWindow</code>:</p>
+<pre><code class="language-python">class MyWindow(Gtk.Window):
+</code></pre>
+<p>В конструкторе класса мы должны вызвать конструктор суперкласса. Кроме того, мы говорим ему установить значение свойства <code>title</code> на <em><code>Hello World</code></em></p>
+<pre><code class="language-python">        super().__init__(title=&quot;Hello World&quot;)
+</code></pre>
+<p>Следующие три строки используются для создания виджета кнопки, подключения к его сигналу нажатия и добавления его в качестве дочернего элемента в окно верхнего уровня.</p>
+<pre><code class="language-python">        self.button = Gtk.Button(label=&quot;Нажми на меня&quot;)
+        self.button.connect(&quot;clicked&quot;, self.on_button_clicked)
+        self.add(self.button)
+</code></pre>
+<p>Соответственно, метод <code>on_button_clicked()</code> будет вызываться, если вы нажмёте на кнопку.</p>
+<pre><code class="language-python">    def on_button_clicked(self, widget):
+        print(&quot;Hello World&quot;)
+</code></pre>
+<p>Последний блок вне класса очень похож на пример выше, но вместо создания экземпляра общего класса <code>Gtk.Window</code> мы создаём экземпляр <code>MyWindow</code>.</p>
+<p>Откроется соедующее окно:</p>
+<p><img alt="Окно 2" src="../pic/started/window2.png" /></p>
+<p>Вывод в терминал:</p>
+<p><img alt="Окно 2 - его вывод в терминал" src="../pic/started/win2-console.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../basics/" class="btn btn-neutral float-right" title="Основы">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Установка"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../basics/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

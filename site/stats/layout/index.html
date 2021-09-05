@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Контейнеры макета - Python3-GObject Tutorial</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u041a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u044b \u043c\u0430\u043a\u0435\u0442\u0430";
+    var mkdocs_page_input_path = "stats/layout.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Python3-GObject Tutorial</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Введение</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Установка</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../started/">Начиная</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../basics/">Основы</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../unicode/">Работа со строками</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../gallery/">Список виджетов</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Контейнеры макета</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#boxes">Блоки (boxes)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">Пример</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#grid">Сетки (grid)</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Python3-GObject Tutorial</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Контейнеры макета</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">Контейнеры макета</h1>
+<script src="../prism.js"></script>
+
+<p>В то время как многие наборы инструментов GUI требуют, чтобы вы точно размещали виджеты в окне, используя абсолютное позиционирование, GTK+ использует иной подход. Вместо того, чтобы указывать положение и размер каждого виджета в окне, вы можете расположить свои виджеты в строках, столбцах и/или таблицах. Размер вашего окна может быть определён автоматически на основе размеров содержащихся в нём виджетов. И размеры виджетов, в свою очередь, определяются объёмом текста, который они содержат, или минимальными и максимальными размерами, которые вы установили, и/или тем, как вы запросили, чтобы доступное пространство было разделено между наборами виджетов. Вы можете улучшить свой макет, указав расстояние заполнения и значения центрирования для каждого из виджетов. Вы можете улучшить свой макет, указав расстояние заполнения и значения центрирования для каждого из виджетов. GTK+ затем использует всю эту информацию, чтобы разумно и плавно изменять размер и положение всего, когда пользователь манипулирует окном.</p>
+<p>GTK+ упорядочивает виджеты иерархически, используя <em>контейнеры</em>. Они невидимы для конечного пользователя и вставляются в окно или перемещаются друг в друга для компонентов макета. Есть два вида контейнеров: контейнеры с одним дочерним элементом, которые являются потомком <code>Gtk.Bin</code>, и контейнеры с несколькими дочерними элементами, которые являются потомками <code>Gtk.Container</code>. Чаще всего используются горизонтальные или вертикальные блоки (<code>Gtk.Box</code>) и сетки (<code>Gtk.Grid</code>).</p>
+<h2 id="boxes">Блоки (boxes)</h2>
+<p>Блоки - это невидимые контейнеры, в которые можно упаковать виджеты. При упаковке виджетов в горизонтальный блок объекты вставляются горизонтально слева направо или справа налево в зависимости от того, используется ли <code>Gtk.Box.pack_start()</code> или <code>Gtk.Box.pack_end()</code>. В вертикальном поле виджеты упакованы сверху вниз или наоборот. Вы можете использовать любую комбинацию блоков внутри или рядом с другими ячейками для создания желаемого эффекта.</p>
+<h3 id="_2">Пример</h3>
+<p>Посмотрим на слегка изменённую версию расширенного примера с двумя кнопками.</p>
+<p><img alt="Расширенный пример с двумя кнопками" src="../pic/layout/win1.png" /></p>
+<pre><code class="language-python">import gi
+
+gi.require_version(&quot;Gtk&quot;, &quot;3.0&quot;)
+from gi.repository import Gtk
+
+
+class MyWindow(Gtk.Window):
+    def __init__(self):
+        super().__init__(title=&quot;Привет, мир&quot;)
+
+        self.box = Gtk.Box(spacing=6)
+        self.add(self.box)
+
+        self.button1 = Gtk.Button(label=&quot;Привет&quot;)
+        self.button1.connect(&quot;clicked&quot;, self.on_button1_clicked)
+        self.box.pack_start(self.button1, True, True, 0)
+
+        self.button2 = Gtk.Button(label=&quot;Пока&quot;)
+        self.button2.connect(&quot;clicked&quot;, self.on_button2_clicked)
+        self.box.pack_start(self.button2, True, True, 0)
+
+    def on_button1_clicked(self, widget):
+        print(&quot;Hello&quot;)
+
+    def on_button2_clicked(self, widget):
+        print(&quot;Goodbye&quot;)
+
+
+win = MyWindow()
+win.connect(&quot;destroy&quot;, Gtk.main_quit)
+win.show_all()
+Gtk.main()
+</code></pre>
+<p>Вывод в терминал будет таким:</p>
+<p><img alt="Вывод в терминал" src="../pic/layout/win2.png" /></p>
+<p>Сначала создаётся горизонтально ориентированный контейнер-бокс, в котором между дочерними элементами размещается 6 пикселей. Этот блок становится дочерним элементом окна верхнего уровня:</p>
+<pre><code class="language-python">        self.box = Gtk.Box(spacing=6)
+        self.add(self.box)
+</code></pre>
+<p>После чего помещаем две кнопки в контейнер бокса:</p>
+<pre><code class="language-python">        self.button1 = Gtk.Button(label=&quot;Привет&quot;)
+        self.button1.connect(&quot;clicked&quot;, self.on_button1_clicked)
+        self.box.pack_start(self.button1, True, True, 0)
+
+        self.button2 = Gtk.Button(label=&quot;Пока&quot;)
+        self.button2.connect(&quot;clicked&quot;, self.on_button2_clicked)
+        self.box.pack_start(self.button2, True, True, 0)
+</code></pre>
+<p>В то время как в <code>Gtk.Box.pack_start()</code> виджеты располагаются слева направо, <code>Gtk.Box.pack_end()</code> располагает их справа налево.</p>
+<h2 id="grid">Сетки (grid)</h2>
+<p><code>Gtk.Grid</code> - это контейнер, в котором дочерние виджеты располагаются в строках и столбцах, но вам не нужно указывать параметры в конструкторе. Потомки добавляются с помощью <code>Gtk.Grid.attach()</code>. Они могут охватывать несколько строк или столбцов. Метод <code>Gtk.Grid.attach()</code> принимает пять параметров:</p>
+<ol>
+<li>Дочерний параметр - это добавляемый <code>Gtk.Widget</code>;</li>
+<li><code>left</code> - это номер столбца</li>
+<li><code>top</code> указывает номер строки, к которой нужно прикрепить верхнюю часть дочернего элемента;</li>
+<li><code>width</code> и <code>height</code> указывают количество столбцов, которые будут охватывать дочерний элемент, и кол-во строк, которые будут охватывать дочерний элемент, соответственно.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../gallery/" class="btn btn-neutral" title="Список виджетов"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../gallery/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

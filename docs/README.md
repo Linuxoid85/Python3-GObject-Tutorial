@@ -2,24 +2,19 @@
 
 Данное руковдство является неофициальным переводом [The Python GTK+ 3 Tutorial](https://python-gtk-3-tutorial.readthedocs.io/en/latest/index.html). Автор оригинала: [Sebastian Pölsterl](https://github.com/sebp). Автор перевода на русский язык: [Михаил Краснов](https://github.com/Linuxoid85).
 
-<table>
-	<tr>
-		<td>Версия</td>
-		<td>3.4</td>
-	</tr>
-	<tr>
-		<td>Дата</td>
-		<td>05.08.2021</td>
-	</tr>
-	<tr>
-		<td>Дата начала перевода</td>
-		<td>30.08.2021</td>
-	</tr>
-	<tr>
-		<td>Copyright</td>
-		<td>GNU Free Documentation License 1.3 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts</td>
-	</tr>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Релиз</dt>
+<dd class="field-odd"><p>3.4</p>
+</dd>
+<dt class="field-even">Дата перевода оригинала</dt>
+<dd class="field-even"><p>05 авг. 2021</p>
+</dd>
+<dt class="field-even">Дата (перевод)</dt>
+<dd class="field-even">30.08.2021</dd>
+<dt class="field-odd">Copyright</dt>
+<dd class="field-odd"><p>GNU Free Documentation License 1.3 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts</p>
+</dd>
+</dl>
 
 ## Введение
 
