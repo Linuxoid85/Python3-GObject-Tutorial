@@ -179,8 +179,8 @@ class ListBoxWindow(Gtk.Window):
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         hbox.pack_start(vbox, True, True, 0)
 
-        label1 = Gtk.Label(label="Automatic Date & Time", xalign=0)
-        label2 = Gtk.Label(label="Requires internet access", xalign=0)
+        label1 = Gtk.Label(label="Автоматич. дата и время", xalign=0)
+        label2 = Gtk.Label(label="Необходим доступ в интернет", xalign=0)
         vbox.pack_start(label1, True, True, 0)
         vbox.pack_start(label2, True, True, 0)
 
@@ -193,7 +193,7 @@ class ListBoxWindow(Gtk.Window):
         row = Gtk.ListBoxRow()
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=50)
         row.add(hbox)
-        label = Gtk.Label(label="Enable Automatic Update", xalign=0)
+        label = Gtk.Label(label="Включить автоматическое обновление", xalign=0)
         check = Gtk.CheckButton()
         hbox.pack_start(label, True, True, 0)
         hbox.pack_start(check, False, True, 0)
@@ -203,10 +203,10 @@ class ListBoxWindow(Gtk.Window):
         row = Gtk.ListBoxRow()
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=50)
         row.add(hbox)
-        label = Gtk.Label(label="Date Format", xalign=0)
+        label = Gtk.Label(label="Формат даиы", xalign=0)
         combo = Gtk.ComboBoxText()
-        combo.insert(0, "0", "24-hour")
-        combo.insert(1, "1", "AM/PM")
+        combo.insert(0, "0", "24-часовой")
+        combo.insert(1, "1", "12-часовой")
         hbox.pack_start(label, True, True, 0)
         hbox.pack_start(combo, False, True, 0)
 
