@@ -91,7 +91,7 @@ Gtk.main()
 
 Наконец, [`Gtk.Grid`](https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Grid.html#Gtk.Grid) можно использовать как [`Gtk.Box`](https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Box.html#Gtk.Box), просто используя `Gtk.Grid.add()`, который замещает дочерние элементы рядом друг с другом в направлении, определяемым свойством "orientation" (по умолчанию [`Gtk.Orientation.HORISONTAL`](https://lazka.github.io/pgi-docs/Gtk-3.0/enums.html#Gtk.Orientation.HORIZONTAL).
 
-## Пример
+### Пример
 
 ![Контейнеры макета](pic/gallery/grid-packing.png)
 
@@ -109,12 +109,12 @@ class GridWindow(Gtk.Window):
 
         super().__init__(title="Grid Example")
 
-        button1 = Gtk.Button(label="Button 1")
-        button2 = Gtk.Button(label="Button 2")
-        button3 = Gtk.Button(label="Button 3")
-        button4 = Gtk.Button(label="Button 4")
-        button5 = Gtk.Button(label="Button 5")
-        button6 = Gtk.Button(label="Button 6")
+        button1 = Gtk.Button(label="Кнопка 1")
+        button2 = Gtk.Button(label="Кнопка 2")
+        button3 = Gtk.Button(label="Кнопка 3")
+        button4 = Gtk.Button(label="Кнопка 4")
+        button5 = Gtk.Button(label="Кнопка 5")
+        button6 = Gtk.Button(label="Кнопка 6")
 
         grid = Gtk.Grid()
         grid.add(button1)
@@ -136,3 +136,108 @@ Gtk.main()
 ## ListBox
 
 [Gtk.ListBox](https://lazka.github.io/pgi-docs/Gtk-3.0/classes/ListBox.html#Gtk.ListBox) - это вертикальный контейнер, содержащий дочерние элементы [`Gtk.ListBoxRow`](https://lazka.github.io/pgi-docs/Gtk-3.0/classes/ListBoxRow.html#Gtk.ListBoxRow). Эти строки можно динамически сортировать и фильтровать, а заголовки можно добавлять динамически в зависимости от содержимого строки. Он так же позволяет осуществлять навигацию и выбор с помощью клавиатуры и мыши, как в обычном списке.
+
+Использование `Gtk.ListBox` часто является альтернативой [`Gtk.TreeView`](https://lazka.github.io/pgi-docs/Gtk-3.0/classes/TreeView.html#Gtk.TreeView), особенно когда содержимое списка имеет более сложную компоновку, чем то, что разрешено [`Gtk.CellRenderer`](https://lazka.github.io/pgi-docs/Gtk-3.0/classes/CellRenderer.html#Gtk.CellRenderer), или когда содержимое является интерактивным (например, в нём есть кнопка).
+
+Хотя `Gtk.ListBox` должен иметь только дочерние элементы `Gtk.ListBoxRow`, вы можете добавить к нему любой виджет [`Gtk.Container.add()`](https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Container.html#Gtk.Container.add), и виджет `Gtk.ListBoxRow` будет автоматически вставлен между списком и виджетом.
+
+### Пример
+
+![ListBox](pic/layout/listbox.png)
+
+```python
+#!/bin/python3
+
+import gi
+
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
+
+
+class ListBoxRowWithData(Gtk.ListBoxRow):
+    def __init__(self, data):
+        super().__init__()
+        self.data = data
+        self.add(Gtk.Label(label=data))
+
+
+class ListBoxWindow(Gtk.Window):
+    def __init__(self):
+        super().__init__(title="ListBox")
+        self.set_border_width(10)
+
+        box_outer = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.add(box_outer)
+
+        listbox = Gtk.ListBox()
+        listbox.set_selection_mode(Gtk.SelectionMode.NONE)
+        box_outer.pack_start(listbox, True, True, 0)
+
+        row = Gtk.ListBoxRow()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=50)
+        row.add(hbox)
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        hbox.pack_start(vbox, True, True, 0)
+
+        label1 = Gtk.Label(label="Automatic Date & Time", xalign=0)
+        label2 = Gtk.Label(label="Requires internet access", xalign=0)
+        vbox.pack_start(label1, True, True, 0)
+        vbox.pack_start(label2, True, True, 0)
+
+        switch = Gtk.Switch()
+        switch.props.valign = Gtk.Align.CENTER
+        hbox.pack_start(switch, False, True, 0)
+
+        listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=50)
+        row.add(hbox)
+        label = Gtk.Label(label="Enable Automatic Update", xalign=0)
+        check = Gtk.CheckButton()
+        hbox.pack_start(label, True, True, 0)
+        hbox.pack_start(check, False, True, 0)
+
+        listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=50)
+        row.add(hbox)
+        label = Gtk.Label(label="Date Format", xalign=0)
+        combo = Gtk.ComboBoxText()
+        combo.insert(0, "0", "24-hour")
+        combo.insert(1, "1", "AM/PM")
+        hbox.pack_start(label, True, True, 0)
+        hbox.pack_start(combo, False, True, 0)
+
+        listbox.add(row)
+
+        listbox_2 = Gtk.ListBox()
+        items = "This is a sorted ListBox Fail".split()
+
+        for item in items:
+            listbox_2.add(ListBoxRowWithData(item))
+
+        def sort_func(row_1, row_2, data, notify_destroy):
+            return row_1.data.lower() > row_2.data.lower()
+
+        def filter_func(row, data, notify_destroy):
+            return False if row.data == "Fail" else True
+
+        listbox_2.set_sort_func(sort_func, None, False)
+        listbox_2.set_filter_func(filter_func, None, False)
+
+        def on_row_activated(listbox_widget, row):
+            print(row.data)
+
+        listbox_2.connect("row-activated", on_row_activated)
+
+        box_outer.pack_start(listbox_2, True, True, 0)
+        listbox_2.show_all()
+
+
+win = ListBoxWindow()
+win.connect("destroy", Gtk.main_quit)
+win.show_all()
+Gtk.main()
+```
