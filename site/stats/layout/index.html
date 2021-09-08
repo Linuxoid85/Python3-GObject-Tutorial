@@ -81,6 +81,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#grid">Сетки (grid)</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Пример</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#listbox">ListBox</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -188,6 +192,47 @@ Gtk.main()
 <li><code>child</code> - это добавляемый <a href="https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Widget.html#Gtk.Widget"><code>Gtk.Widget</code></a>, как указано выше;</li>
 <li><code>sibling</code> - это существующий дочерний виджет <code>self</code> (экземпляр <a href="https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Grid.html#Gtk.Grid"><code>Gtk.Grid</code></a> или <code>None</code>. Виджет <code>child</code> будет размещён рядом с одноуровневым элементом или, если одноуровневый виджет <code>sibling</code> as <code>None</code>, в начале или конце сетки.</li>
 </ol>
+<p>Наконец, <a href="https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Grid.html#Gtk.Grid"><code>Gtk.Grid</code></a> можно использовать как <a href="https://lazka.github.io/pgi-docs/Gtk-3.0/classes/Box.html#Gtk.Box"><code>Gtk.Box</code></a>, просто используя <code>Gtk.Grid.add()</code>, который замещает дочерние элементы рядом друг с другом в направлении, определяемым свойством "orientation" (по умолчанию <a href="https://lazka.github.io/pgi-docs/Gtk-3.0/enums.html#Gtk.Orientation.HORIZONTAL"><code>Gtk.Orientation.HORISONTAL</code></a>.</p>
+<h2 id="_3">Пример</h2>
+<p><img alt="Контейнеры макета" src="../pic/gallery/grid-packing.png" /></p>
+<pre><code class="language-python">#!/bin/python3
+
+import gi
+
+gi.require_version(&quot;Gtk&quot;, &quot;3.0&quot;)
+from gi.repository import Gtk
+
+
+class GridWindow(Gtk.Window):
+    def __init__(self):
+
+        super().__init__(title=&quot;Grid Example&quot;)
+
+        button1 = Gtk.Button(label=&quot;Button 1&quot;)
+        button2 = Gtk.Button(label=&quot;Button 2&quot;)
+        button3 = Gtk.Button(label=&quot;Button 3&quot;)
+        button4 = Gtk.Button(label=&quot;Button 4&quot;)
+        button5 = Gtk.Button(label=&quot;Button 5&quot;)
+        button6 = Gtk.Button(label=&quot;Button 6&quot;)
+
+        grid = Gtk.Grid()
+        grid.add(button1)
+        grid.attach(button2, 1, 0, 2, 1)
+        grid.attach_next_to(button3, button1, Gtk.PositionType.BOTTOM, 1, 2)
+        grid.attach_next_to(button4, button3, Gtk.PositionType.RIGHT, 2, 1)
+        grid.attach(button5, 1, 2, 1, 1)
+        grid.attach_next_to(button6, button5, Gtk.PositionType.RIGHT, 1, 1)
+
+        self.add(grid)
+
+
+win = GridWindow()
+win.connect(&quot;destroy&quot;, Gtk.main_quit)
+win.show_all()
+Gtk.main()
+</code></pre>
+<h2 id="listbox">ListBox</h2>
+<p><a href="https://lazka.github.io/pgi-docs/Gtk-3.0/classes/ListBox.html#Gtk.ListBox">Gtk.ListBox</a> - это вертикальный контейнер, содержащий дочерние элементы <a href="https://lazka.github.io/pgi-docs/Gtk-3.0/classes/ListBoxRow.html#Gtk.ListBoxRow"><code>Gtk.ListBoxRow</code></a>. Эти строки можно динамически сортировать и фильтровать, а заголовки можно добавлять динамически в зависимости от содержимого строки. Он так же позволяет осуществлять навигацию и выбор с помощью клавиатуры и мыши, как в обычном списке.</p>
               
             </div>
           </div>
